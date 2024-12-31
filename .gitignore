@@ -2,3 +2,4 @@
 venv
 *.h5
 .idea/
+env.py

@@ -2,8 +2,8 @@ import numpy as np
 import tensorflow as tf
 
 # Dados simulados: índices de medo e preços
-fear_index = np.random.rand(8192*1024)  # Exemplo de índice de medo
-crypto_prices = np.random.rand(8192*1024)  # Exemplo de preços
+fear_index = np.array([i*1.0 for i in range(1024)])  # Exemplo de índice de medo
+crypto_prices = np.array([i*2.0 for i in range(1024)])  # Exemplo de preços
 
 # Criar dados de entrada com janela temporal
 def create_dataset(data1, data2, window_size=7):
