@@ -1,5 +1,7 @@
 .venv
 venv
 *.h5
+.idea
 .idea/
-env.py
+.idea/*
+samples/env.py
