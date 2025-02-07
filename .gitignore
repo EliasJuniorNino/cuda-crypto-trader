@@ -4,4 +4,4 @@ venv
 .idea
 .idea/
 .idea/*
-samples/env.py
+env.py
