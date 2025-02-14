@@ -1,6 +1,5 @@
 import mysql.connector
 from mysql.connector import Error
-from datetime import timedelta
 import pandas as pd
 import os
 import joblib
@@ -12,14 +11,14 @@ from sklearn.pipeline import Pipeline
 def train_model(df, coin):
     """Treina um modelo de Random Forest e salva o arquivo."""
     X = df.drop(columns=[f"{coin}_max_price", f"{coin}_min_price"])
-    y = df[[f"{coin}_max_price", f"{coin}_min_price"]].shift(1, fill_value=0)
+    y = df[[f"{coin}_max_price", f"{coin}_min_price"]].shift(-1)
 
-    X = X.iloc[1:]
-    y = y.iloc[1:]
+    X = X.iloc[:-1]
+    y = y.iloc[:-1]
 
     pipeline = Pipeline([
         ('scaler', StandardScaler()),
-        ('model', RandomForestRegressor(n_estimators=200, max_depth=20, random_state=42, n_jobs=-1))
+        ('model', RandomForestRegressor(n_estimators=500, max_depth=50, random_state=42, n_jobs=-1))
     ])
 
     pipeline.fit(X, y)
@@ -58,7 +57,7 @@ def get_data(db_connection):
     cursor = db_connection.cursor()
 
     data = []
-    column_names = ['fear_timestamp', 'fear_value']
+    column_names = ['fear_date', 'fear_value']
     coin_names = []
 
     cursor.execute("SELECT symbol FROM binance_cryptos_names GROUP BY symbol")
@@ -67,32 +66,17 @@ def get_data(db_connection):
         column_names.append(f"{coin}_max_price")
         column_names.append(f"{coin}_min_price")
 
-    cursor.execute("SELECT * FROM fear_greed_index ORDER BY timestamp DESC LIMIT 6")
-    for (fear_id, fear_timestamp, fear_value, fear_class) in cursor.fetchall():
-        params = (
-            fear_timestamp,
-            fear_timestamp + timedelta(days=1)
-        )
-        cursor.execute("""
-            SELECT coin, 
-                   MAX(price) AS max_price, 
-                   MIN(price) AS min_price
-            FROM coin_price_history
-            WHERE date BETWEEN %s AND %s AND coin in ( 
-                SELECT DISTINCT symbol
-                FROM binance_cryptos_names 
-            )
-            GROUP BY coin
-        """, params)
-
-        crypto_values = {'fear_timestamp': fear_timestamp, 'fear_value': fear_value}
+    cursor.execute("SELECT * FROM fear_greed_index ORDER BY date ASC")
+    for (fear_id, fear_date, fear_value, fear_class) in cursor.fetchall():
+        crypto_values = {'fear_date': fear_date, 'fear_value': fear_value}
         for coin in coin_names:
             crypto_values[f"{coin}_max_price"] = 0
             crypto_values[f"{coin}_min_price"] = 0
 
-        for (coin, max_price, min_price) in cursor.fetchall():
-            crypto_values[f"{coin}_max_price"] = max_price
-            crypto_values[f"{coin}_min_price"] = min_price
+        cursor.execute("SELECT * FROM model_params WHERE fear_date = (%s)", (fear_date,))
+        for _id, _fear_date, _fear_value, symbol, max_price, min_price in cursor.fetchall():
+            crypto_values[f"{symbol}_max_price"] = max_price
+            crypto_values[f"{symbol}_min_price"] = min_price
 
         if len(crypto_values.keys()) > 2:
             data.append(crypto_values)
@@ -101,13 +85,13 @@ def get_data(db_connection):
     df = pd.DataFrame.from_records(data)
 
     # Convertendo timestamp
-    df["fear_timestamp"] = pd.to_datetime(df["fear_timestamp"])
-    df["year"] = df["fear_timestamp"].dt.year
-    df["month"] = df["fear_timestamp"].dt.month
-    df["day"] = df["fear_timestamp"].dt.day
-    df["day_of_week"] = df["fear_timestamp"].dt.weekday
-    df["timestamp"] = df["fear_timestamp"].astype('int64') // 10 ** 9  # Convertendo timestamp para Unix time
-    df.drop(columns=["fear_timestamp"], inplace=True)
+    df["fear_date"] = pd.to_datetime(df["fear_date"])
+    df["year"] = df["fear_date"].dt.year
+    df["month"] = df["fear_date"].dt.month
+    df["day"] = df["fear_date"].dt.day
+    df["day_of_week"] = df["fear_date"].dt.weekday
+    df["timestamp"] = df["fear_date"].astype('int64') // 10 ** 9  # Convertendo timestamp para Unix time
+    df.drop(columns=["fear_date"], inplace=True)
 
     # Normalizando dados numéricos (exceto as colunas de preço)
     features_to_normalize = [col for col in df.columns if col not in column_names]

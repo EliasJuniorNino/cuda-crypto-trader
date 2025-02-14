@@ -92,9 +92,7 @@ def get_data(db_connection):
             crypto_values[f"{coin}_max_price"] = 0
             crypto_values[f"{coin}_min_price"] = 0
 
-        cursor.execute("""
-            SELECT * FROM model_params WHERE fear_date = (%s)
-        """, (fear_date,))  # Correção da passagem de tupla
+        cursor.execute("""SELECT * FROM model_params WHERE fear_date = (%s)""", (fear_date,))
         for _id, _fear_date, _fear_value, symbol, max_price, min_price in cursor.fetchall():
             crypto_values[f"{symbol}_max_price"] = max_price
             crypto_values[f"{symbol}_min_price"] = min_price
