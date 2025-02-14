@@ -2,7 +2,7 @@ import mysql.connector
 
 
 def generate_data(connection, cursor):
-    # Criar tabela se não existir
+    # Criar índice se não existir (execute apenas uma vez no banco)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS model_params (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,6 +15,10 @@ def generate_data(connection, cursor):
     """)
     connection.commit()
 
+    cursor.execute("DELETE FROM model_params WHERE 1")
+    connection.commit()
+    print("model_params limpa")
+
     # Buscar dados otimizados
     cursor.execute("""
         SELECT
@@ -23,24 +27,26 @@ def generate_data(connection, cursor):
             c.symbol AS symbol,
             MAX(h.price) AS max_price,
             MIN(h.price) AS min_price
-        FROM fear_greed_index f
-        JOIN coin_price_history h ON h.date BETWEEN f.date AND f.date + INTERVAL 1 DAY
-        JOIN binance_cryptos_names c ON h.symbol = c.symbol
-        GROUP BY f.date, f.value, c.symbol;
+        FROM
+            fear_greed_index f
+        JOIN coin_price_history h ON
+            h.date BETWEEN f.date AND f.date + INTERVAL 1 DAY
+        JOIN binance_cryptos_names c ON
+            h.symbol = c.symbol
+        GROUP BY
+            f.date,
+            c.symbol,
+            f.value;
     """)
 
     # Inserir dados em batch
     data_batch = cursor.fetchall()
+    print("%s dados encontrados", len(data_batch))
 
     if data_batch:
         cursor.executemany("""
             INSERT INTO model_params (fear_date, fear_value, symbol, max_price, min_price)
-            VALUES (%s, %s, %s, %s, %s)
-            ON DUPLICATE KEY UPDATE 
-                fear_date = VALUES(fear_date),
-                fear_value = VALUES(fear_value),
-                max_price = VALUES(max_price),
-                min_price = VALUES(min_price);
+            VALUES (%s, %s, %s, %s, %s);
         """, data_batch)
         connection.commit()
         print(f"{len(data_batch)} registros inseridos/atualizados.")

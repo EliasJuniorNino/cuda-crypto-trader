@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6702a39d-6153-453f-89d1-9aadedcc3fb5" name="Changes" comment="updated to tensorflow">
-      <change afterPath="$PROJECT_DIR$/src/get_param_table.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/script.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
+    <list default="true" id="6702a39d-6153-453f-89d1-9aadedcc3fb5" name="Changes" comment="updated code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/get_param_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_param_table.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739556109633</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="updated code">
+      <option name="closed" value="true" />
+      <created>1739558135590</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1739558135590</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -224,10 +230,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="feat: collect fear index" />
-    <MESSAGE value="updated code" />
     <MESSAGE value="updated files" />
     <MESSAGE value="updated to tensorflow" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated to tensorflow" />
+    <MESSAGE value="updated code" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
