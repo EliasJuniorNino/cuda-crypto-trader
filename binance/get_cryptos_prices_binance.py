@@ -17,7 +17,7 @@ DB_CONFIG = {
 BINANCE_API_URL = "https://api.binance.com/api/v3/klines"
 INTERVAL = "1m"  # Intervalo de tempo
 LIMIT = 60*24  # Número de registros a buscar
-END_TIME = datetime.combine(datetime.today(), datetime.min.time()) - timedelta(days=9)
+END_TIME = datetime.combine(datetime.today(), datetime.min.time()) # - timedelta(days=9)
 
 # Criar tabela para armazenar o histórico de preços
 TABLE_CREATION_QUERY = """

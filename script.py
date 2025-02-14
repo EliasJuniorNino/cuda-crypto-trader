@@ -5,7 +5,6 @@ import pandas as pd
 import numpy as np
 import os
 import joblib
-from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 DB_CONFIG = {
@@ -99,7 +98,10 @@ def test_and_predict(df, coin):
 
     # Separando features (X) e valores reais (y)
     X_test = df.drop(columns=[f"{coin}_max_price", f"{coin}_min_price"])
-    y_real = df[[f"{coin}_max_price", f"{coin}_min_price"]]
+    y_real = df[[f"{coin}_max_price", f"{coin}_min_price"]].shift(1, fill_value=0)
+
+    X_test=X_test.iloc[1:]
+    y_real=y_real.iloc[1:]
 
     # Normalizando os dados de entrada (o modelo já contém um scaler)
     X_test = model.named_steps['scaler'].transform(X_test)
@@ -137,6 +139,8 @@ if __name__ == "__main__":
             if predictions is not None:
                 predictions["coin"] = coin_name
                 all_predictions.append(predictions)
+
+        print(all_predictions)
 
         # Salvando previsões em CSV
         if all_predictions:

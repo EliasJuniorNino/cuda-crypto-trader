@@ -12,7 +12,10 @@ from sklearn.pipeline import Pipeline
 def train_model(df, coin):
     """Treina um modelo de Random Forest e salva o arquivo."""
     X = df.drop(columns=[f"{coin}_max_price", f"{coin}_min_price"])
-    y = df[[f"{coin}_max_price", f"{coin}_min_price"]]
+    y = df[[f"{coin}_max_price", f"{coin}_min_price"]].shift(1, fill_value=0)
+
+    X = X.iloc[1:]
+    y = y.iloc[1:]
 
     pipeline = Pipeline([
         ('scaler', StandardScaler()),
