@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6702a39d-6153-453f-89d1-9aadedcc3fb5" name="Changes" comment="updated code">
+    <list default="true" id="6702a39d-6153-453f-89d1-9aadedcc3fb5" name="Changes" comment="feat: collect fear index">
+      <change afterPath="$PROJECT_DIR$/binance/get_binance_crypto_names.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/binance/get_cryptos_prices_binance.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/get_crypto_names.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/get_cryptos_prices.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/get_latest_fear_index.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_fear.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +41,12 @@
     &quot;assignee&quot;: &quot;EliasJuniorNino&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/EliasJuniorNino/cuda-crypto-trader.git",
-    "accountId": "8a29c7e0-b564-41e1-bb56-917ab2be373b"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/EliasJuniorNino/cuda-crypto-trader.git&quot;,
+    &quot;accountId&quot;: &quot;8a29c7e0-b564-41e1-bb56-917ab2be373b&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -55,11 +62,21 @@
   "keyToString": {
     "Python.check_tensorflow.executor": "Run",
     "Python.crt_001.executor": "Run",
+    "Python.get_binance_crypto_names.executor": "Run",
+    "Python.get_crypto.executor": "Run",
+    "Python.get_crypto_names.executor": "Run",
+    "Python.get_cryptos_prices.executor": "Run",
+    "Python.get_cryptos_prices_binance.executor": "Run",
     "Python.get_fear.executor": "Run",
+    "Python.get_latest_fear_index.executor": "Run",
     "Python.main.executor": "Run",
     "Python.miner.executor": "Run",
     "Python.read_tweeters.executor": "Run",
+    "Python.script.executor": "Run",
+    "Python.scrypt2.executor": "Run",
+    "Python.test.executor": "Run",
     "Python.test_tensorflow.executor": "Run",
+    "Python.train.executor": "Run",
     "Python.trainer.executor": "Debug",
     "Python.training.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -70,7 +87,11 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/binance" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/samples" />
     </key>
@@ -123,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738965164053</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: collect fear index">
+      <option name="closed" value="true" />
+      <created>1738967694551</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738967694551</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,6 +169,30 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="updated code" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated code" />
+    <MESSAGE value="feat: collect fear index" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: collect fear index" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/get_latest_fear_index.py</url>
+          <line>103</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/script.py</url>
+          <line>133</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
