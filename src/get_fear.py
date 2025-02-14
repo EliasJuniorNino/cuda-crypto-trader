@@ -22,7 +22,8 @@ DB_CONFIG = {
 TABLE_CREATION_QUERY = """
 CREATE TABLE IF NOT EXISTS fear_greed_index (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    timestamp DATETIME NOT NULL,
+    timestamp VARCHAR(255) NOT NULL,
+    date DATETIME NOT NULL,
     value INT NOT NULL,
     classification VARCHAR(50) NOT NULL,
     UNIQUE (timestamp)  -- Garantir que o timestamp seja único

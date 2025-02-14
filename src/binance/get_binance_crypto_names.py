@@ -1,7 +1,6 @@
 import requests
 import mysql.connector
 from mysql.connector import Error
-import env
 
 # Configurações da API Binance
 API_URL_BINANCE = "https://api.binance.com/api/v1/exchangeInfo"

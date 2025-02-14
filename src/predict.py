@@ -32,7 +32,7 @@ def get_test_data(db_connection):
     cursor = db_connection.cursor()
 
     data = []
-    column_names = ['fear_timestamp', 'fear_value']
+    column_names = ['fear_date', 'fear_value']
     coin_names = []
 
     cursor.execute("SELECT symbol FROM binance_cryptos_names GROUP BY symbol")
@@ -41,21 +41,19 @@ def get_test_data(db_connection):
         column_names.append(f"{coin_name}_max_price")
         column_names.append(f"{coin_name}_min_price")
 
-    cursor.execute("SELECT * FROM fear_greed_index ORDER BY timestamp DESC LIMIT 14")
-    for (fear_id, fear_timestamp, fear_value, fear_class) in cursor.fetchall():
-        params = (fear_timestamp, fear_timestamp + timedelta(days=1))
+    cursor.execute("SELECT * FROM fear_greed_index ORDER BY date DESC LIMIT 6")
+    for (fear_id, fear_date, fear_value, fear_class) in cursor.fetchall():
+        params = (fear_date, fear_date + timedelta(days=1))
 
         cursor.execute("""
-            SELECT coin, 
-                   MAX(price) AS max_price, 
-                   MIN(price) AS min_price
+            SELECT symbol, MAX(price) AS max_price, MIN(price) AS min_price
             FROM coin_price_history
             WHERE date BETWEEN %s AND %s 
-            AND coin IN (SELECT DISTINCT symbol FROM binance_cryptos_names)
-            GROUP BY coin
+            AND symbol IN (SELECT DISTINCT symbol FROM binance_cryptos_names)
+            GROUP BY symbol
         """, params)
 
-        crypto_values = {'fear_timestamp': fear_timestamp, 'fear_value': fear_value}
+        crypto_values = {'fear_date': fear_date, 'fear_value': fear_value}
 
         for coin_name in coin_names:
             crypto_values[f"{coin_name}_max_price"] = 0
@@ -72,13 +70,13 @@ def get_test_data(db_connection):
     df = pd.DataFrame.from_records(data)
 
     # Convertendo timestamp
-    df["fear_timestamp"] = pd.to_datetime(df["fear_timestamp"])
-    df["year"] = df["fear_timestamp"].dt.year
-    df["month"] = df["fear_timestamp"].dt.month
-    df["day"] = df["fear_timestamp"].dt.day
-    df["day_of_week"] = df["fear_timestamp"].dt.weekday
-    df["timestamp"] = df["fear_timestamp"].astype('int64') // 10 ** 9  # Convertendo timestamp para Unix time
-    df.drop(columns=["fear_timestamp"], inplace=True)
+    df["fear_date"] = pd.to_datetime(df["fear_date"])
+    df["year"] = df["fear_date"].dt.year
+    df["month"] = df["fear_date"].dt.month
+    df["day"] = df["fear_date"].dt.day
+    df["day_of_week"] = df["fear_date"].dt.weekday
+    df["timestamp"] = df["fear_date"].astype('int64') // 10 ** 9  # Convertendo timestamp para Unix time
+    df.drop(columns=["fear_date"], inplace=True)
 
     return df, coin_names
 

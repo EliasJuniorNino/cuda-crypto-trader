@@ -1,5 +1,5 @@
 import tweepy
-import env
+from src import env
 
 client = tweepy.Client(
     consumer_key=env.consumer_key,

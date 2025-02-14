@@ -23,10 +23,11 @@ DB_CONFIG = {
 TABLE_CREATION_QUERY = """
 CREATE TABLE IF NOT EXISTS coin_price_history (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    coin VARCHAR(255) NOT NULL,
-    timestamp DATETIME NOT NULL,
+    symbol VARCHAR(255) NOT NULL,
+    timestamp VARCHAR(255) NOT NULL,
+    date datetime NULL,
     price DECIMAL(65,30) NOT NULL,
-    UNIQUE (coin, timestamp)  -- Garante que o timestamp para cada moeda não se repita
+    UNIQUE (coin, timestamp, date)
 );
 """
 

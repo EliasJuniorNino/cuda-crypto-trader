@@ -4,34 +4,53 @@ from datetime import timedelta
 import pandas as pd
 import os
 import joblib
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
 from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestRegressor
 from sklearn.pipeline import Pipeline
 
+# Habilitar o uso da GPU no TensorFlow para macOS com chip M2
+physical_devices = tf.config.list_physical_devices('GPU')
+print('physical_devices', physical_devices)
+if physical_devices:
+    tf.config.set_visible_devices(physical_devices[0], 'GPU')
+    print('GPU enabled')
 
 def train_model(df, coin):
-    """Treina um modelo de Random Forest e salva o arquivo."""
+    """Treina um modelo de rede neural e salva o arquivo."""
     X = df.drop(columns=[f"{coin}_max_price", f"{coin}_min_price"])
     y = df[[f"{coin}_max_price", f"{coin}_min_price"]].shift(1, fill_value=0)
 
     X = X.iloc[1:]
     y = y.iloc[1:]
 
-    pipeline = Pipeline([
-        ('scaler', StandardScaler()),
-        ('model', RandomForestRegressor(n_estimators=200, max_depth=20, random_state=42, n_jobs=-1))
+    # Normalizando os dados
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    y_scaled = scaler.fit_transform(y)
+
+    # Definindo o modelo de rede neural
+    model = Sequential([
+        Dense(64, input_dim=X_scaled.shape[1], activation='relu'),
+        Dropout(0.2),
+        Dense(32, activation='relu'),
+        Dense(2)  # Saída para max_price e min_price
     ])
 
-    pipeline.fit(X, y)
+    model.compile(optimizer='adam', loss='mean_squared_error')
+
+    # Treinando o modelo
+    model.fit(X_scaled, y_scaled, epochs=100, batch_size=32, verbose=1)
 
     # Criando diretório se não existir
     os.makedirs("models", exist_ok=True)
 
     # Salvando o modelo
-    model_path = f"models/model_{coin}.pkl"
-    joblib.dump(pipeline, model_path)
+    model_path = f"models/model_{coin}.keras"
+    model.save(model_path)
     print(f"Modelo salvo em {model_path}")
-
 
 DB_CONFIG = {
     "host": "localhost",
@@ -40,7 +59,6 @@ DB_CONFIG = {
     "password": "trader",
     "database": "crypto_trader"
 }
-
 
 def connect_db():
     """Conecta ao banco de dados e retorna a conexão."""
@@ -51,7 +69,6 @@ def connect_db():
     except Error as e:
         print("Erro ao conectar ao banco:", e)
         return None
-
 
 def get_data(db_connection):
     """Busca os dados do banco, realiza pré-processamento e treina modelos para cada moeda."""
@@ -67,29 +84,24 @@ def get_data(db_connection):
         column_names.append(f"{coin}_max_price")
         column_names.append(f"{coin}_min_price")
 
-    cursor.execute("SELECT * FROM fear_greed_index ORDER BY timestamp DESC LIMIT 6")
-    for (fear_id, fear_timestamp, fear_value, fear_class) in cursor.fetchall():
-        params = (
-            fear_timestamp,
-            fear_timestamp + timedelta(days=1)
-        )
-        cursor.execute("""
-            SELECT coin, 
-                   MAX(price) AS max_price, 
-                   MIN(price) AS min_price
-            FROM coin_price_history
-            WHERE date BETWEEN %s AND %s AND coin in ( 
-                SELECT DISTINCT symbol
-                FROM binance_cryptos_names 
-            )
-            GROUP BY coin
-        """, params)
-
-        crypto_values = {'fear_timestamp': fear_timestamp, 'fear_value': fear_value}
+    cursor.execute("SELECT * FROM fear_greed_index ORDER BY date DESC LIMIT 6")
+    for (fear_id, fear_date, fear_value, fear_class) in cursor.fetchall():
+        crypto_values = {'fear_date': fear_date, 'fear_value': fear_value}
         for coin in coin_names:
             crypto_values[f"{coin}_max_price"] = 0
             crypto_values[f"{coin}_min_price"] = 0
 
+        cursor.execute("""
+            SELECT symbol, 
+                   MAX(price) AS max_price, 
+                   MIN(price) AS min_price
+            FROM coin_price_history
+            WHERE date BETWEEN %s AND %s AND symbol in ( 
+                SELECT DISTINCT symbol
+                FROM binance_cryptos_names
+            )
+            GROUP BY symbol
+        """, (fear_date, fear_date + timedelta(days=1)))
         for (coin, max_price, min_price) in cursor.fetchall():
             crypto_values[f"{coin}_max_price"] = max_price
             crypto_values[f"{coin}_min_price"] = min_price
@@ -101,13 +113,13 @@ def get_data(db_connection):
     df = pd.DataFrame.from_records(data)
 
     # Convertendo timestamp
-    df["fear_timestamp"] = pd.to_datetime(df["fear_timestamp"])
-    df["year"] = df["fear_timestamp"].dt.year
-    df["month"] = df["fear_timestamp"].dt.month
-    df["day"] = df["fear_timestamp"].dt.day
-    df["day_of_week"] = df["fear_timestamp"].dt.weekday
-    df["timestamp"] = df["fear_timestamp"].astype('int64') // 10 ** 9  # Convertendo timestamp para Unix time
-    df.drop(columns=["fear_timestamp"], inplace=True)
+    df["fear_date"] = pd.to_datetime(df["fear_date"])
+    df["year"] = df["fear_date"].dt.year
+    df["month"] = df["fear_date"].dt.month
+    df["day"] = df["fear_date"].dt.day
+    df["day_of_week"] = df["fear_date"].dt.weekday
+    df["timestamp"] = df["fear_date"].astype('int64') // 10 ** 9  # Convertendo timestamp para Unix time
+    df.drop(columns=["fear_date"], inplace=True)
 
     # Normalizando dados numéricos (exceto as colunas de preço)
     features_to_normalize = [col for col in df.columns if col not in column_names]

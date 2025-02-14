@@ -5,11 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6702a39d-6153-453f-89d1-9aadedcc3fb5" name="Changes" comment="updated code">
-      <change afterPath="$PROJECT_DIR$/samples/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/db/schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/binance/get_cryptos_prices_binance.py" beforeDir="false" afterPath="$PROJECT_DIR$/binance/get_cryptos_prices_binance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binance/get_binance_crypto_names.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/binance/get_binance_crypto_names.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binance/get_cryptos_prices_binance.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/binance/get_cryptos_prices_binance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_crypto_names.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_crypto_names.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_cryptos_prices.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_cryptos_prices.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_fear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_fear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_latest_fear_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_latest_fear_index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/load_predictions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/load_predictions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/check_tensorflow.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/samples/check_tensorflow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/miner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/samples/miner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/read_tweeters.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/samples/read_tweeters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/requirements-mac-m2" beforeDir="false" afterPath="$PROJECT_DIR$/src/samples/requirements-mac-m2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/samples/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/training.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/samples/training.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/predict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +83,7 @@
     "Python.get_latest_fear_index.executor": "Run",
     "Python.main.executor": "Run",
     "Python.miner.executor": "Run",
+    "Python.predict.executor": "Run",
     "Python.read_tweeters.executor": "Run",
     "Python.script.executor": "Run",
     "Python.scrypt2.executor": "Run",
@@ -87,6 +104,8 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/db" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/binance" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/samples" />
@@ -164,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739513714455</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="updated code">
+      <option name="closed" value="true" />
+      <created>1739540370515</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1739540370515</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,14 +215,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/get_latest_fear_index.py</url>
+          <url>file://$PROJECT_DIR$/src/get_latest_fear_index.py</url>
           <line>103</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/script.py</url>
-          <line>125</line>
-          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

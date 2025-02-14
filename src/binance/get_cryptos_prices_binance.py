@@ -23,7 +23,7 @@ END_TIME = datetime.combine(datetime.today(), datetime.min.time()) # - timedelta
 TABLE_CREATION_QUERY = """
 CREATE TABLE IF NOT EXISTS coin_price_history (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    coin VARCHAR(255) NOT NULL,
+    symbol VARCHAR(255) NOT NULL,
     timestamp VARCHAR(255) NOT NULL,
     date datetime NULL,
     price DECIMAL(65,30) NOT NULL,

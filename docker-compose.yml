@@ -1,29 +1,29 @@
 version: '3.8'
 
 services:
-  db_trader:
-    image: mysql:latest
-    container_name: mysql_container
+  db_trader_pg:
+    image: postgres:latest
+    container_name: postgres_container
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: crypto_trader
-      MYSQL_USER: trader
-      MYSQL_PASSWORD: trader
+      POSTGRES_DB: crypto_trader
+      POSTGRES_USER: trader
+      POSTGRES_PASSWORD: trader
     ports:
-      - "3306:3306"
+      - "5432:5432"
     volumes:
-      - db_trader:/var/lib/mysql
+      - ./data/var/lib/postgresql/data:/var/lib/postgresql/data  # Espelha os dados na pasta /data do projeto
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    container_name: phpmyadmin_container
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin_container
     environment:
-      PMA_HOST: db_trader
-      MYSQL_ROOT_PASSWORD: root_password
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "8888:80"
     depends_on:
-      - db_trader
+      - db_trader_pg
+    volumes:
+      - ./data/var/lib/pgadmin/:/var/lib/pgadmin/
 
-volumes:
-  db_trader:
+volumes: {}
