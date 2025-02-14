@@ -3,12 +3,13 @@ import mysql.connector
 
 def generate_data(connection, cursor):
     # Criar índice se não existir (execute apenas uma vez no banco)
+    cursor.execute(""" DROP TABLE model_params; """)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS model_params (
             id INT AUTO_INCREMENT PRIMARY KEY,
             fear_date DATETIME NOT NULL,
             fear_value INT NOT NULL,
-            symbol VARCHAR(255) NOT NULL UNIQUE,
+            symbol VARCHAR(255) NOT NULL,
             max_price DECIMAL(65,30) NOT NULL,
             min_price DECIMAL(65,30) NOT NULL
         );
