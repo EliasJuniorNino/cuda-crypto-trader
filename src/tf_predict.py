@@ -83,7 +83,7 @@ def get_test_data(db_connection):
 
 def test_and_predict(df, coin):
     """Carrega o modelo salvo, valida com novos dados e gera previsões."""
-    model_path = f"models/model_{coin}.pkl"
+    model_path = f"models_tf/model_{coin}.pkl"
 
     if not os.path.exists(model_path):
         print(f"❌ Modelo para {coin} não encontrado! Pulei a validação.")

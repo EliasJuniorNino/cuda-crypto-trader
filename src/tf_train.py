@@ -45,10 +45,10 @@ def train_model(df, coin):
     model.fit(X_scaled, y_scaled, epochs=100, batch_size=32, verbose=1)
 
     # Criando diretório se não existir
-    os.makedirs("models", exist_ok=True)
+    os.makedirs("models_tf", exist_ok=True)
 
     # Salvando o modelo
-    model_path = f"models/model_{coin}.keras"
+    model_path = f"models_tf/model_{coin}.keras"
     model.save(model_path)
     print(f"Modelo salvo em {model_path}")
 
