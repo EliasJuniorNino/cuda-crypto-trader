@@ -1,45 +1,13 @@
+from datetime import timedelta
 import mysql.connector
 from mysql.connector import Error
-from datetime import datetime, timedelta
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
+import os
+import joblib
 from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-
-# Train model
-def train_model(df, column_index):
-    # Separando X (features) e y (targets)
-    X = df.drop(columns=[f"col_{column_index}", f"col_{column_index + 1}"])  # Variáveis de entrada
-    y = df[[f"col_{column_index}", f"col_{column_index + 1}"]]  # Valores a serem previstos
-
-    # Normalizando os dados
-    scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(X)
-
-    # Dividindo os dados em treino (80%) e teste (20%)
-    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
-
-    # Criando o modelo
-    model = RandomForestRegressor(n_estimators=100, random_state=42)
-    model.fit(X_train, y_train)
-
-    # Fazendo previsões
-    y_pred = model.predict(X_test)
-
-    # Avaliando o modelo
-    mae = mean_absolute_error(y_test, y_pred)
-    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-
-    print(f"MAE: {mae:.6f}")
-    print(f"RMSE: {rmse:.6f}")
-
-    return model, scaler
-
-
-# Configurações do Banco de Dados
 DB_CONFIG = {
     "host": "localhost",
     "port": 3306,
@@ -50,6 +18,7 @@ DB_CONFIG = {
 
 
 def connect_db():
+    """Conecta ao banco de dados e retorna a conexão."""
     try:
         connection = mysql.connector.connect(**DB_CONFIG)
         if connection.is_connected():
@@ -59,84 +28,118 @@ def connect_db():
         return None
 
 
-def get_data(db_connection):
+def get_test_data(db_connection):
+    """Busca os dados do banco, realiza pré-processamento e retorna DataFrame com as moedas."""
     cursor = db_connection.cursor()
-    cursor.execute("""
-        SELECT * 
-        FROM fear_greed_index
-        ORDER BY timestamp DESC
-        LIMIT 6
-    """)
+
     data = []
+    column_names = ['fear_timestamp', 'fear_value']
+    coin_names = []
+
+    cursor.execute("SELECT symbol FROM binance_cryptos_names GROUP BY symbol")
+    for (coin_name,) in cursor.fetchall():
+        coin_names.append(coin_name)
+        column_names.append(f"{coin_name}_max_price")
+        column_names.append(f"{coin_name}_min_price")
+
+    cursor.execute("SELECT * FROM fear_greed_index ORDER BY timestamp DESC LIMIT 14")
     for (fear_id, fear_timestamp, fear_value, fear_class) in cursor.fetchall():
-        date_interval = (fear_timestamp, fear_timestamp + timedelta(days=1))
+        params = (fear_timestamp, fear_timestamp + timedelta(days=1))
+
         cursor.execute("""
             SELECT coin, 
                    MAX(price) AS max_price, 
                    MIN(price) AS min_price
             FROM coin_price_history
-            WHERE date BETWEEN %s AND %s
+            WHERE date BETWEEN %s AND %s 
+            AND coin IN (SELECT DISTINCT symbol FROM binance_cryptos_names)
             GROUP BY coin
-        """, date_interval)
-        crypto_values = [fear_timestamp, fear_value]
-        for (coin, max_price, min_price) in cursor.fetchall():
-            crypto_values.append(max_price)
-            crypto_values.append(min_price)
-        if not len(crypto_values) in [2]:
+        """, params)
+
+        crypto_values = {'fear_timestamp': fear_timestamp, 'fear_value': fear_value}
+
+        for coin_name in coin_names:
+            crypto_values[f"{coin_name}_max_price"] = 0
+            crypto_values[f"{coin_name}_min_price"] = 0
+
+        for (coin_name, max_price, min_price) in cursor.fetchall():
+            crypto_values[f"{coin_name}_max_price"] = max_price
+            crypto_values[f"{coin_name}_min_price"] = min_price
+
+        if len(crypto_values.keys()) > 2:
             data.append(crypto_values)
-            print('crypto_values', crypto_values, end='\n')
 
-    max_columns = max(len(row) for row in data)
+    # Criando DataFrame
+    df = pd.DataFrame.from_records(data)
 
-    # Criando nomes de colunas dinamicamente
-    column_names = [f"col_{i}" for i in range(max_columns)]
+    # Convertendo timestamp
+    df["fear_timestamp"] = pd.to_datetime(df["fear_timestamp"])
+    df["year"] = df["fear_timestamp"].dt.year
+    df["month"] = df["fear_timestamp"].dt.month
+    df["day"] = df["fear_timestamp"].dt.day
+    df["day_of_week"] = df["fear_timestamp"].dt.weekday
+    df["timestamp"] = df["fear_timestamp"].astype('int64') // 10 ** 9  # Convertendo timestamp para Unix time
+    df.drop(columns=["fear_timestamp"], inplace=True)
 
-    # Padronizando o tamanho das linhas (preenchendo com None ou 0 se necessário)
-    data_padded = [row + [None] * (max_columns - len(row)) for row in data]
-
-    # Criando o DataFrame
-    df = pd.DataFrame(data_padded, columns=column_names)
-
-    # Convertendo a coluna 'date' para datetime
-    df["col_0"] = pd.to_datetime(df["col_0"])
-
-    # Extraindo features da data
-    df["year"] = df["col_0"].dt.year
-    df["month"] = df["col_0"].dt.month
-    df["day"] = df["col_0"].dt.day
-    df["day_of_week"] = df["col_0"].dt.weekday
-    df["timestamp"] = df["col_0"].astype("int64") // 10 ** 9
-
-    # Removendo a coluna original 'date'
-    df.drop(columns=["col_0"], inplace=True)
-
-    for i in range(2, max_columns):
-        model, scaler = train_model(df.copy(), i)
-
-        # Fazendo uma previsão para um novo exemplo
-        # Criar DataFrame de teste sem a coluna alvo
-        df_test = df.copy().drop(columns=[f"col_{i}", f"col_{i + 1}"])
-
-        # Preparar novo dado para previsão
-        novo_dado = np.array([0 if v is None else v for v in df_test.iloc[0]]).reshape(1, -1)
-        novo_dado_scaled = scaler.transform(novo_dado)
-
-        # Fazer a previsão usando o modelo treinado
-        previsao = model.predict(novo_dado_scaled)
-
-        # Obter previsões individuais de cada árvore
-        tree_predictions = np.array([tree.predict(novo_dado_scaled)[0] for tree in model.estimators_])
-
-        # Calcular o desvio padrão das previsões
-        confianca = np.std(tree_predictions)
-
-        print(f"Previsão de preço: {previsao[0]}")
-        print(f"Confiança da previsão: {confianca:.6f}")
+    return df, coin_names
 
 
-# Executar o fluxo
+def test_and_predict(df, coin):
+    """Carrega o modelo salvo, valida com novos dados e gera previsões."""
+    model_path = f"models/model_{coin}.pkl"
+
+    if not os.path.exists(model_path):
+        print(f"❌ Modelo para {coin} não encontrado! Pulei a validação.")
+        return None, None
+
+    print(f"\n🔍 Testando e prevendo para {coin}...")
+
+    # Carrega o modelo salvo
+    model = joblib.load(model_path)
+
+    # Separando features (X) e valores reais (y)
+    X_test = df.drop(columns=[f"{coin}_max_price", f"{coin}_min_price"])
+    y_real = df[[f"{coin}_max_price", f"{coin}_min_price"]]
+
+    # Normalizando os dados de entrada (o modelo já contém um scaler)
+    X_test = model.named_steps['scaler'].transform(X_test)
+
+    # Fazendo previsões
+    y_pred = model.named_steps['model'].predict(X_test)
+
+    # Calculando métricas
+    mae = mean_absolute_error(y_real, y_pred)
+    rmse = np.sqrt(mean_squared_error(y_real, y_pred))
+
+    print(f"📊 Resultados para {coin}:")
+    print(f"   MAE:  {mae:.6f}")
+    print(f"   RMSE: {rmse:.6f}\n")
+
+    # Criando um DataFrame com os resultados reais vs previstos
+    predictions = pd.DataFrame(y_real.copy())
+    predictions["pred_max_price"] = y_pred[:, 0]
+    predictions["pred_min_price"] = y_pred[:, 1]
+
+    return predictions, coin
+
+
 if __name__ == "__main__":
     db_conn = connect_db()
     if db_conn:
-        get_data(db_conn)
+        df, coin_names = get_test_data(db_conn)
         db_conn.close()
+
+        all_predictions = []
+
+        # Testando e prevendo cada moeda
+        for coin in coin_names:
+            predictions, coin_name = test_and_predict(df.copy(), coin)
+            if predictions is not None:
+                predictions["coin"] = coin_name
+                all_predictions.append(predictions)
+
+        # Salvando previsões em CSV
+        if all_predictions:
+            final_predictions = pd.concat(all_predictions, ignore_index=True)
+            final_predictions.to_csv("predictions.csv", index=False)
+            print("📂 Previsões salvas em 'predictions.csv'.")

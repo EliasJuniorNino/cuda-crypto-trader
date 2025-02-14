@@ -1,65 +1,123 @@
+import mysql.connector
+from mysql.connector import Error
+from datetime import timedelta
 import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
+import os
+import joblib
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.pipeline import Pipeline
 
-# Dados fornecidos
-data = [
-    ("2025-02-12", 35, 0.314, 0.2847),
-    ("2025-02-11", 35, 0.01962, 0.01744),
-    ("2025-02-10", 35, 0.00807, 0.00734),
-    ("2025-02-09", 35, 0.1199, 0.1046),
-    ("2025-01-07", 48, 0.7151, 0.6925),
-    ("2025-01-06", 61, 0.22512, 0.206),
-    ("2024-12-24", 55, 0.001445, 0.000981),
-    ("2024-12-24", 55, 0.066, 0.0519),
-]
 
-# Criando o DataFrame
-df = pd.DataFrame(data, columns=["date", "fear_index", "price_max", "price_min"])
+def train_model(df, coin):
+    """Treina um modelo de Random Forest e salva o arquivo."""
+    X = df.drop(columns=[f"{coin}_max_price", f"{coin}_min_price"])
+    y = df[[f"{coin}_max_price", f"{coin}_min_price"]]
 
-# Convertendo a coluna 'date' para datetime
-df["date"] = pd.to_datetime(df["date"])
+    pipeline = Pipeline([
+        ('scaler', StandardScaler()),
+        ('model', RandomForestRegressor(n_estimators=200, max_depth=20, random_state=42, n_jobs=-1))
+    ])
 
-# Extraindo features da data
-df["year"] = df["date"].dt.year
-df["month"] = df["date"].dt.month
-df["day"] = df["date"].dt.day
-df["day_of_week"] = df["date"].dt.weekday
-df["timestamp"] = df["date"].astype("int64") // 10**9
+    pipeline.fit(X, y)
 
-# Removendo a coluna original 'date'
-df.drop(columns=["date"], inplace=True)
+    # Criando diretório se não existir
+    os.makedirs("models", exist_ok=True)
 
-# Separando X (features) e y (targets)
-X = df.drop(columns=["price_max", "price_min"])  # Variáveis de entrada
-y = df[["price_max", "price_min"]]  # Valores a serem previstos
+    # Salvando o modelo
+    model_path = f"models/model_{coin}.pkl"
+    joblib.dump(pipeline, model_path)
+    print(f"Modelo salvo em {model_path}")
 
-# Normalizando os dados
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
 
-# Dividindo os dados em treino (80%) e teste (20%)
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+DB_CONFIG = {
+    "host": "localhost",
+    "port": 3306,
+    "user": "trader",
+    "password": "trader",
+    "database": "crypto_trader"
+}
 
-# Criando o modelo
-model = RandomForestRegressor(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
 
-# Fazendo previsões
-y_pred = model.predict(X_test)
+def connect_db():
+    """Conecta ao banco de dados e retorna a conexão."""
+    try:
+        connection = mysql.connector.connect(**DB_CONFIG)
+        if connection.is_connected():
+            return connection
+    except Error as e:
+        print("Erro ao conectar ao banco:", e)
+        return None
 
-# Avaliando o modelo
-mae = mean_absolute_error(y_test, y_pred)
-rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 
-print(f"MAE: {mae:.6f}")
-print(f"RMSE: {rmse:.6f}")
+def get_data(db_connection):
+    """Busca os dados do banco, realiza pré-processamento e treina modelos para cada moeda."""
+    cursor = db_connection.cursor()
 
-# Fazendo uma previsão para um novo exemplo
-novo_dado = np.array([[35, 2025, 2, 12, 2, 1739299200]])  # Exemplo: Fear index 35, Data 2025-02-12
-novo_dado_scaled = scaler.transform(novo_dado)
-previsao = model.predict(novo_dado_scaled)
-print(f"Previsão de preço: {previsao}")
+    data = []
+    column_names = ['fear_timestamp', 'fear_value']
+    coin_names = []
+
+    cursor.execute("SELECT symbol FROM binance_cryptos_names GROUP BY symbol")
+    for (coin,) in cursor.fetchall():
+        coin_names.append(coin)
+        column_names.append(f"{coin}_max_price")
+        column_names.append(f"{coin}_min_price")
+
+    cursor.execute("SELECT * FROM fear_greed_index ORDER BY timestamp DESC LIMIT 6")
+    for (fear_id, fear_timestamp, fear_value, fear_class) in cursor.fetchall():
+        params = (
+            fear_timestamp,
+            fear_timestamp + timedelta(days=1)
+        )
+        cursor.execute("""
+            SELECT coin, 
+                   MAX(price) AS max_price, 
+                   MIN(price) AS min_price
+            FROM coin_price_history
+            WHERE date BETWEEN %s AND %s AND coin in ( 
+                SELECT DISTINCT symbol
+                FROM binance_cryptos_names 
+            )
+            GROUP BY coin
+        """, params)
+
+        crypto_values = {'fear_timestamp': fear_timestamp, 'fear_value': fear_value}
+        for coin in coin_names:
+            crypto_values[f"{coin}_max_price"] = 0
+            crypto_values[f"{coin}_min_price"] = 0
+
+        for (coin, max_price, min_price) in cursor.fetchall():
+            crypto_values[f"{coin}_max_price"] = max_price
+            crypto_values[f"{coin}_min_price"] = min_price
+
+        if len(crypto_values.keys()) > 2:
+            data.append(crypto_values)
+
+    # Criando DataFrame
+    df = pd.DataFrame.from_records(data)
+
+    # Convertendo timestamp
+    df["fear_timestamp"] = pd.to_datetime(df["fear_timestamp"])
+    df["year"] = df["fear_timestamp"].dt.year
+    df["month"] = df["fear_timestamp"].dt.month
+    df["day"] = df["fear_timestamp"].dt.day
+    df["day_of_week"] = df["fear_timestamp"].dt.weekday
+    df["timestamp"] = df["fear_timestamp"].astype('int64') // 10 ** 9  # Convertendo timestamp para Unix time
+    df.drop(columns=["fear_timestamp"], inplace=True)
+
+    # Normalizando dados numéricos (exceto as colunas de preço)
+    features_to_normalize = [col for col in df.columns if col not in column_names]
+    scaler = StandardScaler()
+    df[features_to_normalize] = scaler.fit_transform(df[features_to_normalize])
+
+    # Treinando modelo para cada moeda
+    for coin in coin_names:
+        train_model(df.copy(), coin)
+
+
+if __name__ == "__main__":
+    db_conn = connect_db()
+    if db_conn:
+        get_data(db_conn)
+        db_conn.close()
