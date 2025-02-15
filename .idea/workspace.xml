@@ -7,6 +7,10 @@
     <list default="true" id="6702a39d-6153-453f-89d1-9aadedcc3fb5" name="Changes" comment="updated code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/97095f46-ad29-47d2-83bc-cc57873ba33a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/971515fb-7c98-45cd-bf11-95a5d3ff5154" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/e2bec47f-c199-4cd9-a526-7b8ee4f2bae4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/binance/get_cryptos_prices_binance.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/binance/get_cryptos_prices_binance.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739635091557</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="updated code">
+      <option name="closed" value="true" />
+      <created>1739635729523</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1739635729523</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

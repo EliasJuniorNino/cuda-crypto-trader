@@ -19,7 +19,7 @@ INTERVAL = "1m"  # Intervalo de tempo
 LIMIT = 60*24  # Número de registros a buscar
 
 
-DATE_OFFSET = timedelta(days=0)
+DATE_OFFSET = timedelta(days=1)
 START_TIME = datetime.combine(datetime.today(), datetime.min.time()) - timedelta(days=1) - DATE_OFFSET
 END_TIME = datetime.combine(datetime.today(), datetime.min.time()) - DATE_OFFSET
 print("Collecting from ", START_TIME, " to ", END_TIME)
@@ -29,7 +29,8 @@ print("Collecting from ", START_TIME, " to ", END_TIME)
 TABLE_CREATION_QUERY = """
 CREATE TABLE IF NOT EXISTS coin_price_history (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    symbol VARCHAR(255) NOT NULL,
+    exchange VARCHAR(255) NOT NULL,
+    coin VARCHAR(255) NOT NULL,
     timestamp VARCHAR(255) NOT NULL,
     date datetime NULL,
     price DECIMAL(65,30) NOT NULL,

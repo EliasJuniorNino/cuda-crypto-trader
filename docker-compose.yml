@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mySQL:
     image: mysql:latest
-    container_name: mysql_container
+    container_name: mySQL
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: database
@@ -14,21 +14,10 @@ services:
     volumes:
       - mySQL:/var/lib/mysql
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    container_name: phpmyadmin_container
-    environment:
-      PMA_HOST: mySQL
-      MYSQL_ROOT_PASSWORD: root_password
-    ports:
-      - "8888:80"
-    depends_on:
-      - mySQL
-
 volumes:
   mySQL:
     driver: local
     driver_opts:
       type: none
-      device: ./data/docker/mysql_data
+      device: /Users/eliasjunior/docker/mysql_data
       o: bind

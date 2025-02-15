@@ -16,9 +16,10 @@ DB_CONFIG = {
 
 # Criar tabela para armazenar nomes das criptomoedas
 TABLE_CREATION_QUERY = """
-CREATE TABLE IF NOT EXISTS binance_cryptos_names (
+CREATE TABLE IF NOT EXISTS cryptos_names (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    symbol VARCHAR(50) NOT NULL UNIQUE  -- Evita duplicações de símbolos
+    coin VARCHAR(50) NOT NULL UNIQUE,
+    exchange VARCHAR(255) NOT NULL
 );
 """
 
@@ -58,9 +59,9 @@ def insert_binance_cryptos(connection, cursor, cryptos):
         return
 
     insert_query = """
-    INSERT INTO binance_cryptos_names (symbol)
-    VALUES (%s)
-    ON DUPLICATE KEY UPDATE symbol = VALUES(symbol);
+    INSERT INTO cryptos_names (coin, exchange)
+    VALUES (%s, 'binance')
+    ON DUPLICATE KEY UPDATE coin = VALUES(coin);
     """
 
     try:
