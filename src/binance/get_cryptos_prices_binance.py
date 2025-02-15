@@ -17,7 +17,13 @@ DB_CONFIG = {
 BINANCE_API_URL = "https://api.binance.com/api/v3/klines"
 INTERVAL = "1m"  # Intervalo de tempo
 LIMIT = 60*24  # Número de registros a buscar
-END_TIME = datetime.combine(datetime.today(), datetime.min.time()) # - timedelta(days=9)
+
+
+DATE_OFFSET = timedelta(days=0)
+START_TIME = datetime.combine(datetime.today(), datetime.min.time()) - timedelta(days=1) - DATE_OFFSET
+END_TIME = datetime.combine(datetime.today(), datetime.min.time()) - DATE_OFFSET
+print("Collecting from ", START_TIME, " to ", END_TIME)
+
 
 # Criar tabela para armazenar o histórico de preços
 TABLE_CREATION_QUERY = """
@@ -55,7 +61,13 @@ def fetch_crypto_symbols(cursor):
 # Função para buscar o histórico de preços de uma criptomoeda na Binance
 def fetch_crypto_history(symbol):
     symbol_pair = f"{symbol}USDT"  # Binance usa pares como BTCUSDT, ETHUSDT
-    params = {"symbol": symbol_pair, "interval": INTERVAL, "limit": LIMIT, "endTime": int(END_TIME.timestamp() * 1000)}
+    params = {
+        "symbol": symbol_pair,
+        "interval": INTERVAL,
+        "limit": LIMIT,
+        "startTime": int(START_TIME.timestamp() * 1000),
+        "endTime": int(END_TIME.timestamp() * 1000)
+    }
 
     try:
         response = requests.get(BINANCE_API_URL, params=params, timeout=10)

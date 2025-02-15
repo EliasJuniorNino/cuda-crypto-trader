@@ -3,12 +3,7 @@ from mysql.connector import Error
 import pandas as pd
 import os
 import joblib
-from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.pipeline import Pipeline
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
-from datetime import datetime
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 import logging
 
 # Configuração de logging
@@ -86,51 +81,55 @@ def fetch_data(db_connection):
         logging.error(f"Erro ao buscar dados: {e}")
         return None, None
 
-def train_model(df, coin):
-    """Treina um modelo de Random Forest e salva o arquivo."""
+def load_model(coin):
+    """Carrega o modelo treinado a partir de um arquivo."""
+    try:
+        model_path = f"models/model_{coin}.pkl"
+        if os.path.exists(model_path):
+            model = joblib.load(model_path)
+            logging.info(f"Modelo para {coin} carregado com sucesso.")
+            return model
+        else:
+            logging.error(f"Arquivo do modelo não encontrado: {model_path}")
+            return None
+    except Exception as e:
+        logging.error(f"Erro ao carregar o modelo para {coin}: {e}")
+        return None
+
+def predict_prices(model, df, coin):
+    """Usa o modelo carregado para prever os preços da criptomoeda."""
     try:
         # Separa features (X) e target (y)
         X = df.copy()
-        y = df[[f"{coin}_max_price", f"{coin}_min_price"]].shift(-1)
+        y = df[[f"{coin}_max_price", f"{coin}_min_price"]]
 
-        # Remove a última linha (NaN devido ao shift)
-        X = X.iloc[:-1]
-        y = y.iloc[:-1]
+        # Faz as previsões
+        y_pred = model.predict(X)
 
-        # Divide os dados em treino e teste
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        # Avalia as previsões
+        mse = mean_squared_error(y, y_pred)
+        mae = mean_absolute_error(y, y_pred)
+        logging.info(f"Previsões para {coin} com MSE: {mse:.4f}, MAE: {mae:.4f}")
 
-        # Cria o pipeline de pré-processamento e modelo
-        pipeline = Pipeline([
-            ('scaler', StandardScaler()),
-            ('model', RandomForestRegressor(n_estimators=500, max_depth=50, random_state=42, n_jobs=-1))
-        ])
-
-        # Treina o modelo
-        pipeline.fit(X_train, y_train)
-
-        # Avalia o modelo
-        y_pred = pipeline.predict(X_test)
-        mse = mean_squared_error(y_test, y_pred)
-        logging.info(f"Modelo treinado para {coin} com MSE: {mse:.4f}")
-
-        # Salva o modelo
-        os.makedirs("models", exist_ok=True)
-        model_path = f"models/model_{coin}.pkl"
-        joblib.dump(pipeline, model_path)
-        logging.info(f"Modelo salvo em {model_path}")
+        return {
+            'coin': coin,
+            'predict': y_pred[-1]
+        }
 
     except Exception as e:
-        logging.error(f"Erro ao treinar o modelo para {coin}: {e}")
+        logging.error(f"Erro ao fazer previsões para {coin}: {e}")
 
 def main():
-    """Função principal para carregar dados e treinar modelos."""
+    """Função principal para carregar dados, carregar o modelo e prever os preços."""
     db_conn = connect_db()
     if db_conn:
         df, coin_names = fetch_data(db_conn)
-        if df is not None and coin_names:
+        if df is not None:
             for coin in coin_names:
-                train_model(df.copy(), coin)
+                model = load_model(coin)
+                if model is not None:
+                    predict_data = predict_prices(model, df, coin)
+                    print(predict_data)
         db_conn.close()
         logging.info("Conexão com o banco de dados fechada.")
 

@@ -5,8 +5,634 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6702a39d-6153-453f-89d1-9aadedcc3fb5" name="Changes" comment="updated code">
+      <change afterPath="$PROJECT_DIR$/src/trader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tf_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tf_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/binance/get_cryptos_prices_binance.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/binance/get_cryptos_prices_binance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_1000CAT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_1000CHEEMS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_1000SATS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_1INCH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_1INCHDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_1INCHUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_1MBABYDOGE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AAVE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AAVEDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AAVEUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ACA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ACE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ACH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ACM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ACT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ACX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ADA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ADADOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ADAUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ADX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AERGO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AEUR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AEVO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AGI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AGIX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AGLD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AION.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AIXBT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AKRO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ALCX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ALGO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ALICE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ALPACA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ALPHA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ALPINE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ALT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AMB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AMP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ANC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ANIME.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ANKR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ANT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ANY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_APE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_API3.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_APPC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_APT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ARB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ARDR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ARK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ARKM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ARN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ARPA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ASR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AST.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ASTR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ATA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ATM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ATOM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AUCTION.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AUD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AUDIO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AUTO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AVA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AVAX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AXL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_AXS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BADGER.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BAKE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BAL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BANANA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BAND.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BAR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BAT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BCC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BCD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BCH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BCHA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BCHABC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BCHDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BCHSV.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BCHUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BCN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BCPT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BDOT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BEAM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BEAMX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BEAR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BEL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BERA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BETA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BETH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BGBP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BICO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BIFI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BIO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BKRW.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BLUR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BLZ.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BNB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BNBBEAR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BNBBULL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BNBDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BNBUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BNSOL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BNT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BNX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BOME.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BOND.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BONK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BOT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BQX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BRD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BSW.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BTC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BTCB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BTCDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BTCST.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BTCUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BTG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BTS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BTT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BTTC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BULL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BURGER.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BUSD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_BZRX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_C98.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CAKE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CATI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CDT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CELO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CELR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CETUS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CFX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CGPT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CHAT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CHESS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CHR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CHZ.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CITY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CKB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CLOAK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CLV.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CMT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CND.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_COCOS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_COMBO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_COMP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_COOKIE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_COS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_COTI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_COVER.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_COW.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CREAM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CRV.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CTK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CTSI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CTXC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CVC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CVP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CVX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_CYBER.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_D.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DAI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DAR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DASH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DATA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DCR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DEGO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DENT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DEXE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DF.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DGB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DGD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DIA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DLT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DNT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DOCK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DODO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DOGE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DOGS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DOT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DOTDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DOTUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DREP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DUSK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DYDX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_DYM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EASY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EDO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EDU.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EGLD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EIGEN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ELF.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ENA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ENG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ENJ.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ENS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EOS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EOSBEAR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EOSBULL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EOSDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EOSUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EPS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EPX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ERD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ERN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ETC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ETH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ETHBEAR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ETHBULL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ETHDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ETHFI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ETHUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EUR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EURI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EVX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_EZ.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FARM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FDUSD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FET.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FIDA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FIL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FILDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FILUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FIO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FIRO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FIS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FLM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FLOKI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FLOW.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FLUX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FOR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FORTH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FRONT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FTM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FTT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FUEL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FUN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_FXS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_G.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GAL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GALA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GAS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GBP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GFT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GHST.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GLM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GLMR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GMT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GMX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GNO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GNS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GNT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GRS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GRT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GTC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GTO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GVT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_GXS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HARD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HBAR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HEGIC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HFT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HIFI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HIGH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HIVE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HMSTR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HNT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HOOK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HOT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_HSR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ICN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ICP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ICX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ID.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_IDEX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ILV.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_IMX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_INJ.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_INS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_IO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_IOST.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_IOTA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_IOTX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_IQ.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_IRIS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_JASMY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_JOE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_JST.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_JTO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_JUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_JUV.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_KAIA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_KAVA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_KDA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_KEEP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_KEY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_KLAY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_KMD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_KNC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_KP3R.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_KSM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LAYER.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LAZIO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LDO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LEND.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LEVER.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LINA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LINK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LINKDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LINKUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LISTA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LIT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LOKA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LOOM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LPT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LQTY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LRC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LSK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LTC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LTCDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LTCUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LTO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LUMIA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LUN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LUNA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_LUNC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MAGIC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MANA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MANTA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MASK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MATIC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MAV.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MBL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MBOX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MCO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MDA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MDT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MDX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ME.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MEME.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_METIS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MFT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MINA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MIR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MITH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MKR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MLN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MOB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MOD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MOVE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MOVR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MTH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MTL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_MULTI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NANO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NAS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NAV.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NBS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NBT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NCASH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NEAR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NEBL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NEIRO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NEO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NEXO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NFP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NKN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NMR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NOT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NPXS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NTRN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NU.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NULS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_NXS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OAX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OCEAN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OGN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OMG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OMNI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ONE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ONG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ONT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OOKI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ORCA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ORDI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ORN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OSMO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OST.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_OXT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PAX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PAXG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PDA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PENDLE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PENGU.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PEOPLE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PEPE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PERL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PERP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PHA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PHB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PHX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PIVX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PIXEL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PLA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PNT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PNUT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_POA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_POE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_POL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_POLS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_POLY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_POLYX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_POND.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PORTAL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PORTO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_POWR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PPT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PROM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PROS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PSG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PUNDIX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PYR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_PYTH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_QI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_QKC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_QLC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_QNT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_QSP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_QTUM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_QUICK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RAD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RAMP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RARE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RAY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RCN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RDN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RDNT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_REEF.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_REI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_REN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RENBTC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RENDER.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_REP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_REQ.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_REZ.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RGT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RIF.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RLC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RNDR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RONIN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ROSE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RPL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RPX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RSR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RUNE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_RVN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_S.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SAGA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SALT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SAND.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SANTOS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SCR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SCRT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SEI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SFP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SHIB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SKL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SKY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SLF.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SLP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SNGLS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SNM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SNT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SNX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SOL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SOLV.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SPARTA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SPELL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SRM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SSV.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_STEEM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_STG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_STMX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_STORJ.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_STORM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_STPT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_STRAT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_STRAX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_STRK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_STX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SUB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SUI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SUN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SUPER.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SUSD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SUSHI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SUSHIDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SUSHIUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SWRV.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SXP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SXPDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SXPUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SYN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_SYS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_T.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TAO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TCT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TFUEL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_THE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_THETA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TIA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TKO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TLM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TNB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TNSR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TNT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TOMO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TON.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TORN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TRB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TRIBE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TRIG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TROY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TRU.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TRUMP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TRX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TRXDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TRXUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TST.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TURBO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TUSD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TUSDB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TVK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_TWT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_UFT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_UMA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_UNFI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_UNI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_UNIDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_UNIUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_USDC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_USDP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_USDS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_USDSB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_USDT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_UST.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_USTC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_USUAL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_UTK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VANA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VANRY.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VELODROME.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VEN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VET.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VGX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VIA.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VIB.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VIBE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VIC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VIDT.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VITE.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VOXEL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_VTHO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_W.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WABI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WAN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WAVES.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WAXP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WBETH.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WBTC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WIF.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WIN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WING.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WINGS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WLD.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WNXM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WOO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WPR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WRX.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_WTC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XAI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XEC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XEM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XLM.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XLMDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XLMUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XMR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XNO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XRP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XRPBEAR.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XRPBULL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XRPDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XRPUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XTZ.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XTZDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XTZUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XVG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XVS.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_XZC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_YFI.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_YFIDOWN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_YFII.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_YFIUP.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_YGG.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_YOYO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ZEC.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ZEN.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ZIL.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ZK.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ZRO.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model_ZRX.keras" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,37 +678,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.check_tensorflow.executor": "Run",
-    "Python.crt_001.executor": "Run",
-    "Python.get_binance_crypto_names.executor": "Run",
-    "Python.get_crypto.executor": "Run",
-    "Python.get_crypto_names.executor": "Run",
-    "Python.get_cryptos_prices.executor": "Run",
-    "Python.get_cryptos_prices_binance.executor": "Run",
-    "Python.get_fear.executor": "Run",
-    "Python.get_latest_fear_index.executor": "Run",
-    "Python.get_param_table.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.miner.executor": "Run",
-    "Python.predict.executor": "Run",
-    "Python.read_tweeters.executor": "Run",
-    "Python.script.executor": "Run",
-    "Python.scrypt2.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.test_tensorflow.executor": "Run",
-    "Python.tf_train.executor": "Run",
-    "Python.train.executor": "Run",
-    "Python.trainer.executor": "Debug",
-    "Python.training.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#1 on master",
-    "last_opened_file_path": "/Volumes/DATA/DEV/EliasJuniorNino/GitHub/crypto-trader-model",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.check_tensorflow.executor&quot;: &quot;Run&quot;,
+    &quot;Python.crt_001.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_binance_crypto_names.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_crypto.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_crypto_names.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_cryptos_prices.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_cryptos_prices_binance.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_fear.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_latest_fear_index.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_param_table.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.miner.executor&quot;: &quot;Run&quot;,
+    &quot;Python.predict.executor&quot;: &quot;Run&quot;,
+    &quot;Python.read_tweeters.executor&quot;: &quot;Run&quot;,
+    &quot;Python.script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.scrypt2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_tensorflow.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tf_train.executor&quot;: &quot;Run&quot;,
+    &quot;Python.trader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train.executor&quot;: &quot;Run&quot;,
+    &quot;Python.trainer.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.training.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#1 on master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Volumes/DATA/DEV/EliasJuniorNino/GitHub/crypto-trader-model&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -247,7 +874,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739563293547</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="updated code">
+      <option name="closed" value="true" />
+      <created>1739570041899</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1739570041899</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
